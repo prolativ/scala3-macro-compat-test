@@ -5,7 +5,8 @@
 
 @main def run() =
   println("base-lib version: 0.2.0, util-lib version: 0.1.0")
-  println(foo(z = "aaa", x = 10))
-  println(bar())
-  println(foo(z = "aaa", x = 10, y = true))
+  val encoder = summon[Encoder[Foo]]
+  println(encoder.encode(Foo(z = "aaa", x = 10)))
+  println(encoder.encode(bar()))
+  println(encoder.encode(Foo(z = "aaa", x = 10, y = true)))
   // println(baz())
